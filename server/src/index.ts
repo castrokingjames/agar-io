@@ -3,7 +3,7 @@ import { Server } from "colyseus";
 import { createServer } from "http";
 import FreeForAll from './rooms/FreeForAll';
 
-const port = process.env.PORT || 500
+const port = Number(process.env.PORT) | 2560;
 
 const app = express();
 app.use(express.json());
@@ -16,3 +16,4 @@ const gameServer = new Server({
 gameServer.define("ffa", FreeForAll);
 
 gameServer.listen(port);
+console.log("RUNNING IN " + port);
